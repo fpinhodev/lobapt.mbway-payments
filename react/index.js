@@ -11,8 +11,9 @@ class ExampleTransactionAuthApp extends Component {
 
     this.divContainer = React.createRef()
   }
-
+  
   componentWillMount = () => {
+    alert("Here!");
     this.injectScript(
       'google-recaptcha-v2',
       'https://recaptcha.net/recaptcha/api.js?render=explicit',
@@ -23,7 +24,7 @@ class ExampleTransactionAuthApp extends Component {
   componentDidMount() {
     // In case you want to remove payment loading in order to show an UI.
     $(window).trigger('removePaymentLoading.vtex')
-  }
+  } 
 
   respondTransaction = status => {
     $(window).trigger('transactionValidation.vtex', [status])
@@ -89,6 +90,8 @@ class ExampleTransactionAuthApp extends Component {
 
     return (
       <div className={styles.wrapper}>
+        <div>Test content</div>
+
         {scriptLoaded && !loading ? (
           <Fragment>
             <div className="g-recaptcha" ref={this.divContainer}></div>
